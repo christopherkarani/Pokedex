@@ -20,9 +20,20 @@ class MainViewController: UICollectionViewController {
         collectionView?.register(PokeCell.self, forCellWithReuseIdentifier: PokeCell.reuseIdentifier)
     }
     
+    
+    func getData() {
+        Webservice().load(Pokemon.pokemonResource) { (pokemon) in
+            Pokemon.all.append(pokemon!)
+            DispatchQueue.main.async {
+                 self.collectionView?.reloadData()
+            }
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getData()
         setupCollectionView()
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -31,8 +42,6 @@ class MainViewController: UICollectionViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
 

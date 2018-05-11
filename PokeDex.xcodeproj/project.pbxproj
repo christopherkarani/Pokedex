@@ -17,6 +17,9 @@
 		3C196CEB20A50DFF001B2944 /* MainDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C196CEA20A50DFF001B2944 /* MainDataSource.swift */; };
 		3C196CEF20A51184001B2944 /* MainCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C196CEE20A51184001B2944 /* MainCollectionViewDelegate.swift */; };
 		3C196CF220A51482001B2944 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C196CF120A51482001B2944 /* Font.swift */; };
+		3C196CF420A516FF001B2944 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C196CF320A516FF001B2944 /* Resource.swift */; };
+		3C196CF620A51795001B2944 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C196CF520A51795001B2944 /* Webservice.swift */; };
+		3C196CF820A518CA001B2944 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C196CF720A518CA001B2944 /* Api.swift */; };
 		F35222B96F0D9AA4072F50C8 /* Pods_PokeDex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46D4BE4D3A9CE698DA689F68 /* Pods_PokeDex.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +37,9 @@
 		3C196CEA20A50DFF001B2944 /* MainDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataSource.swift; sourceTree = "<group>"; };
 		3C196CEE20A51184001B2944 /* MainCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		3C196CF120A51482001B2944 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		3C196CF320A516FF001B2944 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		3C196CF520A51795001B2944 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
+		3C196CF720A518CA001B2944 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		46D4BE4D3A9CE698DA689F68 /* Pods_PokeDex.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeDex.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F72C9E5BAF608F6796829F3 /* Pods-PokeDex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeDex.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeDex/Pods-PokeDex.release.xcconfig"; sourceTree = "<group>"; };
 		82F950EEDE42470BADFF0839 /* Pods-PokeDex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeDex.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokeDex/Pods-PokeDex.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +95,9 @@
 		3C0FFA5C20A4E88D0017E7C8 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				3C196CF320A516FF001B2944 /* Resource.swift */,
+				3C196CF520A51795001B2944 /* Webservice.swift */,
+				3C196CF720A518CA001B2944 /* Api.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -129,7 +138,6 @@
 		3C196CE820A50DDA001B2944 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3C196CF020A51472001B2944 /* New Group */,
 				3C196CE920A50DEF001B2944 /* MainVC */,
 			);
 			path = Controller;
@@ -143,13 +151,6 @@
 				3C196CEE20A51184001B2944 /* MainCollectionViewDelegate.swift */,
 			);
 			path = MainVC;
-			sourceTree = "<group>";
-		};
-		3C196CF020A51472001B2944 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		82507831756C2D4433D9D315 /* Frameworks */ = {
@@ -296,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C196CF420A516FF001B2944 /* Resource.swift in Sources */,
 				3C0FFA6920A50AF80017E7C8 /* Sprite.swift in Sources */,
 				3C0FFA4D20A4E7A00017E7C8 /* MainViewController.swift in Sources */,
 				3C0FFA6720A50AD40017E7C8 /* Pokemon.swift in Sources */,
@@ -303,6 +305,8 @@
 				3C196CF220A51482001B2944 /* Font.swift in Sources */,
 				3C0FFA4B20A4E7A00017E7C8 /* AppDelegate.swift in Sources */,
 				3C196CEF20A51184001B2944 /* MainCollectionViewDelegate.swift in Sources */,
+				3C196CF620A51795001B2944 /* Webservice.swift in Sources */,
+				3C196CF820A518CA001B2944 /* Api.swift in Sources */,
 				3C196CEB20A50DFF001B2944 /* MainDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

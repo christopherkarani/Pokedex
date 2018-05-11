@@ -10,12 +10,13 @@ import UIKit
 
 final class MainDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return Pokemon.all.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokeCell.reuseIdentifier, for: indexPath) as! PokeCell
-        
+        let pokemon = Pokemon.all[indexPath.item]
+        cell.pokemon = pokemon
         return cell
     }
 }
