@@ -22,12 +22,27 @@ class MainViewController: UICollectionViewController {
     
     
     func getData() {
-        Webservice().load(Pokemon.pokemonResource) { (pokemon) in
-            Pokemon.all.append(pokemon!)
-            DispatchQueue.main.async {
-                 self.collectionView?.reloadData()
+        let group = DispatchGroup()
+        
+        for count in 1...25 {
+            group.enter()
+            guard let url = URL(string: "http://pokeapi.co/api/v2/pokemon/\(count)") else { return }
+            let res = Resource<Pokemon>(url: url) { (data) -> Pokemon? in
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let pikachu = try! decoder.decode(Pokemon.self, from: data)
+                return pikachu
+            }
+            Webservice().load(res) { (pokemon) in
+                Pokemon.all.append(pokemon!)
+                group.leave()
             }
         }
+        
+        group.notify(queue: .main) {
+            self.collectionView?.reloadData()
+        }
+
     }
     
 

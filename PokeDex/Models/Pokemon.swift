@@ -14,7 +14,7 @@ struct Pokemon: Decodable {
     var name: String
     var sprites: Sprite
     
-    static var all = [Pokemon]()
+    static var all = [Pokemon]() 
 }
 
 extension Pokemon {

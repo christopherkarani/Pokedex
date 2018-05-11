@@ -24,7 +24,15 @@ struct Sprite {
 }
 
 extension Sprite {
-//    static let spriteResouce = Resource<UIImage>.(url: <#T##URL#>, parse: <#T##(Data) -> UIImage?#>)
+    static func spriteResource(withUrl spriteUrl: SpriteImageURLS) -> Resource<UIImage> {
+        let imageResource = Resource<UIImage>(url: spriteUrl.regular) { (data) -> UIImage? in
+            if let image = UIImage(data: data) {
+                return image
+            }
+            return nil
+        }
+        return imageResource
+    }
 }
 
 extension Sprite: Decodable {

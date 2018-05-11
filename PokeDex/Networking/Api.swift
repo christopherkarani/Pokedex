@@ -9,5 +9,5 @@
 import Foundation
 
 struct Api {
-    static let pikachuEndPoint = URL(string: "http://pokeapi.co/api/v2/pokemon/pikachu")!
+    static let pikachuEndPoint = URL(string: "http://pokeapi.co/api/v2/pokemon/500")!
 }

@@ -13,13 +13,23 @@ class PokeCell: UICollectionViewCell {
     var pokemon: Pokemon? {
         didSet {
             if let pokemon  = pokemon {
+                guard let spriteUrl = pokemon.sprites.allUrl else { return }
                 handleTextRendering(withPokemon: pokemon)
+                Webservice().load(Sprite.spriteResource(withUrl: spriteUrl)) { (image) in
+                    DispatchQueue.main.async {
+                        self.spriteImage.image = image
+                    }
+                }
             }
         }
     }
     
-    
-    
+    func handleResource(withSpriteUrl url: SpriteImageURLS) {
+
+        
+
+    }
+
     let spriteImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
