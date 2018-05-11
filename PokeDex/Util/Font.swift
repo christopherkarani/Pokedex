@@ -10,5 +10,5 @@ import Foundation
 
 
 struct Font {
-    static let name = "8-Bit Madness"
+    static let name = "8-Bit-Madness"
 }

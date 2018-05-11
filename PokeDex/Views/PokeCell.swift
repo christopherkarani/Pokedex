@@ -43,7 +43,6 @@ class PokeCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .black
         setupUI()
     }
     
@@ -62,22 +61,27 @@ class PokeCell: UICollectionViewCell {
         idLabel.snp.makeConstraints { (make) in
             make.top.equalTo(spriteImage.snp.bottom).offset(4)
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview().inset(20)
+            make.width.equalToSuperview()
             make.height.equalTo(20)
         }
         
         nameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(idLabel.snp.bottom).offset(4)
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview().inset(20)
+            make.width.equalToSuperview()
             make.height.equalTo(20)
         }
     }
     
     func handleTextRendering(withPokemon pokemon: Pokemon) {
-        guard let font = UIFont(name: Font.name, size: UIFont.labelFontSize) else { return }
+        
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family), FontNames: \(names)")
+        }
+        let font = UIFont(name: Font.name, size: UIFont.labelFontSize)!
         let nameTitle = NSMutableAttributedString(string: "Name: ", attributes: [.font : font])
-        nameTitle.append(NSAttributedString(string: pokemon.name, attributes: [.font : font]))
+        nameTitle.append(NSAttributedString(string: pokemon.name.uppercased(), attributes: [.font : font]))
         
         let idTitle = NSMutableAttributedString(string: "ID: ", attributes: [.font : font])
         idTitle.append(NSAttributedString(string: String(describing: pokemon.id), attributes: [.font : font]))
