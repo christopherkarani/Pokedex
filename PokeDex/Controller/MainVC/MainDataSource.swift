@@ -10,9 +10,7 @@ import UIKit
 
 final class MainDataSource: NSObject, UICollectionViewDataSource {
     
-    var pokemon : [Pokemon] {
-        return Pokemon.all.sorted { $0.id > $1.id }
-    }
+    var pokemon = [Pokemon]()
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Pokemon.all.count
     }

@@ -13,13 +13,14 @@ class PokeCell: UICollectionViewCell {
     var pokemon: Pokemon? {
         didSet {
             if let pokemon  = pokemon {
-                guard let spriteUrl = pokemon.sprites.allUrl else { return }
                 handleTextRendering(withPokemon: pokemon)
-                Webservice().load(Sprite.spriteResource(withUrl: spriteUrl)) { (image) in
-                    DispatchQueue.main.async {
-                        self.spriteImage.image = image
-                    }
-                }
+                //guard let spriteUrl = pokemon.sprites.allUrl else { return }
+//                handleTextRendering(withPokemon: pokemon)
+//                Webservice().load(Sprite.spriteResource(withUrl: spriteUrl)) { (image) in
+//                    DispatchQueue.main.async {
+//                        self.spriteImage.image = image
+//                    }
+//                }
             }
         }
     }
@@ -39,14 +40,14 @@ class PokeCell: UICollectionViewCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "8-Bit Madness", size: UIFont.labelFontSize)
+        label.font = UIFont.pokedexfont
         label.textAlignment = .center
         return label
     }()
     
     let idLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "8-Bit Madness", size: UIFont.labelFontSize)
+        label.font = UIFont.pokedexfont
         label.textAlignment = .center
         return label
     }()
@@ -93,15 +94,14 @@ class PokeCell: UICollectionViewCell {
         let nameTitle = NSMutableAttributedString(string: "Name: ", attributes: [.font : font])
         nameTitle.append(NSAttributedString(string: pokemon.name.uppercased(), attributes: [.font : font]))
         
-        let idTitle = NSMutableAttributedString(string: "ID: ", attributes: [.font : font])
-        idTitle.append(NSAttributedString(string: String(describing: pokemon.id), attributes: [.font : font]))
+        let idTitle = NSMutableAttributedString(string: pokemon.pokedexNumberTag, attributes: [.font : font])
         
         nameLabel.attributedText = nameTitle
         idLabel.attributedText = idTitle
     }
     
     func handleImageRendering(withPokemon pokemon: Pokemon) {
-        let url = pokemon.sprites.allUrl?.regular
+        //let url = pokemon.sprites.allUrl?.regular
     }
     
     required init?(coder aDecoder: NSCoder) {

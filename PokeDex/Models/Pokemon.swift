@@ -9,12 +9,17 @@
 import Foundation
 
 
-struct Pokemon: Decodable {
-    var id: Int
+struct Pokemon: Codable {
+    let url: String
     var name: String
-    var sprites: Sprite
-    
     static var all = [Pokemon]() 
+}
+
+extension Pokemon {
+    var pokedexNumberTag : String {
+        return String.find(inside: url)
+    }
+
 }
 
 extension Pokemon {
@@ -23,6 +28,13 @@ extension Pokemon {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         let pikachu = try! decoder.decode(Pokemon.self, from: data)
         return pikachu
+    }
+    
+    
+    static let allPokemon = Resource<PokeMapper>(url: PokeMapper.url) { (data) -> PokeMapper? in
+        let decoder = JSONDecoder()
+        let pokemon = try! decoder.decode(PokeMapper.self, from: data)
+        return pokemon
     }
 }
 

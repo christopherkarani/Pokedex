@@ -20,7 +20,6 @@ class MainViewController: UICollectionViewController {
         collectionView?.register(PokeCell.self, forCellWithReuseIdentifier: PokeCell.reuseIdentifier)
     }
     
-    
     func getData() {
         let group = DispatchGroup()
         
@@ -30,7 +29,7 @@ class MainViewController: UICollectionViewController {
             let res = Resource<Pokemon>(url: url) { (data) -> Pokemon? in
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let pikachu = try! decoder.decode(Pokemon.self, from: data)
+                let pikachu = try? decoder.decode(Pokemon.self, from: data)
                 return pikachu
             }
             Webservice().load(res) { (pokemon) in
@@ -38,19 +37,42 @@ class MainViewController: UICollectionViewController {
                 group.leave()
             }
         }
+
         
         group.notify(queue: .main) {
-            self.collectionView?.reloadData()
+             self.collectionView?.reloadData()
         }
 
+    }
+    
+    func getPokemonData() {
+        Webservice().load(Pokemon.allPokemon) { (mapper) in
+            guard let mapper = mapper else { return }
+            Pokemon.all += mapper.results
+            DispatchQueue.main.async {
+                self.collectionView?.reloadData()
+            }
+        }
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getData()
+        //getData()
+        getPokemonData()
         setupCollectionView()
         // Do any additional setup after loading the view, typically from a nib.
+        setup(navigationTitle: navigationItem)
+    }
+    
+    func getAllPokemon() {
+//        Webservice().load(Pokemon.allPokemon) { (pokemon) in
+//            print(pokemon!.count)
+//        }
+    }
+    
+    fileprivate func setup(navigationTitle item: UINavigationItem) {
+        item.title = "Pokedex"
     }
 
     override func didReceiveMemoryWarning() {

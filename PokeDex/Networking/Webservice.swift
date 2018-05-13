@@ -9,6 +9,10 @@
 import Foundation
 
 final class Webservice {
+    
+    
+    static var requestsCount = 0
+    
     func load<T>(_ resource: Resource<T>, completion: @escaping(T?) -> Void) {
         URLSession.shared.dataTask(with: resource.url) { (data, _, error) in
             if let error = error {
@@ -16,6 +20,7 @@ final class Webservice {
                 return
             }
             guard let data = data else { return }
+            Webservice.requestsCount += 1
             completion(resource.parse(data))
         }.resume()
     }

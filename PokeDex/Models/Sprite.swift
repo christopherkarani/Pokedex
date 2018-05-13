@@ -10,13 +10,13 @@ import UIKit
 
 typealias SpriteImageURLS = (regular: URL, shiny: URL)
 
-struct Sprite {
-    var regular : String
-    var shiny: String
+struct Sprite: Codable {
+    var frontDefault : String
+    var frontShiny: String
 
     
     var allUrl : SpriteImageURLS? {
-        if let front = URL(string: regular), let shiny = URL(string: shiny) {
+        if let front = URL(string: frontDefault), let shiny = URL(string: frontShiny) {
             return (front,shiny)
         }
         return nil
@@ -35,14 +35,3 @@ extension Sprite {
     }
 }
 
-extension Sprite: Decodable {
-    enum Keys: CodingKey {
-        case frontDefault
-        case frontShiny
-    }
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: Keys.self)
-        regular = try container.decode(String.self, forKey: .frontDefault)
-        shiny = try container.decode(String.self, forKey: .frontShiny)
-    }
-}

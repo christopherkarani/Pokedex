@@ -12,3 +12,10 @@ struct Resource<T> {
     let url: URL
     let parse : (Data) -> T?
 }
+
+extension Resource {
+    init(_ url: URL, parseDecodable: @escaping (Data) -> T?) {
+        self.url = url
+        parse = parseDecodable
+    }
+}
