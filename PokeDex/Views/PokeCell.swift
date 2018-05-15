@@ -26,9 +26,7 @@ class PokeCell: UICollectionViewCell {
     }
     
     func handleResource(withSpriteUrl url: SpriteImageURLS) {
-
         
-
     }
 
     let spriteImage: UIImageView = {
@@ -85,11 +83,6 @@ class PokeCell: UICollectionViewCell {
     }
     
     func handleTextRendering(withPokemon pokemon: Pokemon) {
-        
-        for family in UIFont.familyNames.sorted() {
-            let names = UIFont.fontNames(forFamilyName: family)
-            print("Family: \(family), FontNames: \(names)")
-        }
         let font = UIFont(name: Font.name, size: UIFont.labelFontSize)!
         let nameTitle = NSMutableAttributedString(string: "Name: ", attributes: [.font : font])
         nameTitle.append(NSAttributedString(string: pokemon.name.uppercased(), attributes: [.font : font]))

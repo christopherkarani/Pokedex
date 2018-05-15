@@ -58,10 +58,8 @@ class MainViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //getData()
         getPokemonData()
         setupCollectionView()
-        // Do any additional setup after loading the view, typically from a nib.
         setup(navigationTitle: navigationItem)
     }
     
